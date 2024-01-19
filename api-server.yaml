@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-apiserver
+  namespace: kube-system
+spec:
+  containers:
+  - name: kube-apiserver
+    image: k8s.gcr.io/kube-apiserver:v1.21.1
+  - command:
+    - kube-apiserver
+    - --enable-aggregator-routing
+    - --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt
+    - --requestheader-allowed-names=front-proxy-client
+    - --requestheader-extra-headers-prefix=X-Remote-Extra-
+    # Add other necessary flags here

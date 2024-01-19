@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-pod
+spec:
+  containers:
+  - name: kube-container
+    image: elnurs/kube:1.0.5
+    resources:
+      limits:
+        cpu: "200m"  # Maximum CPU usage allowed. 200m is 2/10 of core
+      requests:
+        cpu: "100m"  # Initial CPU allocation. 100m is 1/10 of core

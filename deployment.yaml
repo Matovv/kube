@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kube
+  template:
+    metadata:
+      labels:
+        app: kube
+    spec:
+      containers:
+      - name: kube-container
+        image: elnurs/kube:1.0.5
+        ports:
+        - containerPort: 8080
